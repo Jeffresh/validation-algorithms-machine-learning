@@ -22,3 +22,33 @@ plot_data(x,y), hold on
 plot(points,ypredicted, '-');hold off
 legend('Training data', ['Polynomial regression Grade:' num2str(grade,'%d')])
 
+%% fit to a linear model  a + bx + x^2 + dx^3+ e*sin(x)
+
+newx =[x;x.^2; x.^3; sin(x);];
+
+theta = normal_equation(newx, y);
+
+
+points = linspace(0,1.5,100);
+points = [points;points.^2; points.^3;sin(points)];
+ypredicted =[ones(1,size(newx,2));points]' *theta;
+
+
+plot_data(x,y), hold on
+plot(points(1,:),ypredicted, '-');hold off
+
+
+%% fit to a linear model a + bx + x^2 + dx^3+ e*sin(x) + f*sin(x)
+
+newx =[x; x.^2;x.^3;sin(x); sin(x);];
+
+theta = normal_equation(newx, y);
+
+
+points = linspace(0,1.5,100);
+points = [points ;points.^2; points.^3;sin(points);sin(points)];
+ypredicted =[ones(1,size(newx,2));points]' *theta;
+
+
+plot_data(x,y), hold on
+plot(points(1,:),ypredicted, '-');hold off
