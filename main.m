@@ -81,9 +81,50 @@ mean_error=(mean(error));
 max_iterations = 1000;
 test_data_percent = 70;
 
-
 for i = 1:max_iterations
     error(i) = simple_validation(x,y,test_data_percent, @linear_model_2_train, @linear_model_2_predict);
 end
 
 mean_error=(mean(error));
+
+%% Cross validation polynomial adjustment
+
+max_polynom_grade = 30;
+max_iterations = 23;
+order = 10;
+
+for polynom = 1:max_polynom_grade
+    for i = 1:max_iterations
+    error(i) = kross_validation(x,y,order, @polynomial_train, @polynomial_predict,polynom);
+    end
+    mean_error(polynom)=(mean(error));
+end
+
+plot(mean_error)
+legend('generalization error')
+xlabel('polynomial grade')
+
+%% Cross validation to a linear model  a + bx + x^2 + dx^3+ e*sin(x)
+max_polynom_grade = 30;
+max_iterations = 23;
+order = 10;
+
+for i = 1:max_iterations
+error(i) = kross_validation(x,y,order, @linear_model_1_train, @linear_model_1_predict);
+end
+
+mean_error=(mean(error))
+
+
+%% Cross validation to a linear model  a + bx + x^2 + dx^3+ e*sin(x) + f*sin(x)
+
+max_polynom_grade = 30;
+max_iterations = 23;
+order = 10;
+
+for i = 1:max_iterations
+error(i) = kross_validation(x,y,order, @linear_model_2_train, @linear_model_2_predict);
+end
+
+mean_error=(mean(error))
+

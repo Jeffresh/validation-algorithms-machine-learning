@@ -17,6 +17,10 @@ for j=1:number_segments
     wcp(j) = cost_function(x_test',y_test',model, predict_function);
 end
 
+model = train_function(x,y,grade);
+
+wcp(j+1) = cost_function(x,y,model,predict_function);
+
 generalization_error = mean(wcp);
 end
 
