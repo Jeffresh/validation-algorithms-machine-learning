@@ -48,7 +48,7 @@ plot(points,ypredicted, '-');hold off
 
 max_polynom_grade = 30;
 max_iterations = 1000;
-test_data_percent = 75;
+test_data_percent = 70;
 
 for polynom = 1:max_polynom_grade
     for i = 1:max_iterations
@@ -60,3 +60,30 @@ end
 plot(mean_error)
 legend('generalization error')
 xlabel('polynomial grade')
+
+%% Simple validation to a linear model  a + bx + x^2 + dx^3+ e*sin(x)
+
+max_iterations = 1000;
+test_data_percent = 70;
+
+
+for i = 1:max_iterations
+    error(i) = simple_validation(x,y,test_data_percent, @linear_model_1_train, @linear_model_1_predict);
+end
+
+mean_error=(mean(error));
+
+
+
+%% Simple validation to a linear model  a + bx + x^2 + dx^3+ e*sin(x) + f*sin(x)
+
+
+max_iterations = 1000;
+test_data_percent = 70;
+
+
+for i = 1:max_iterations
+    error(i) = simple_validation(x,y,test_data_percent, @linear_model_2_train, @linear_model_2_predict);
+end
+
+mean_error=(mean(error));
