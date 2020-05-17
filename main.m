@@ -10,6 +10,8 @@ plot_data(x,y)
 
 %% Polynomial model
 
+close all
+
 grade = 2;
 
 theta = polynomial_train(x,y,grade);
@@ -21,6 +23,7 @@ plot(points,ypredicted, '-');hold off
 legend('Training data', ['Polynomial regression Grade:' num2str(grade,'%d')])
 
 %% fit to a linear model  a + bx + x^2 + dx^3+ e*sin(x)
+close all
 
 theta = linear_model_1_train(x,y);
 points = linspace(0,1.5,100);
@@ -31,6 +34,7 @@ plot(points,ypredicted, '-');hold off
 
 
 %% fit to a linear model a + bx + x^2 + dx^3+ e*sin(x) + f*sin(x)
+close all
 
 theta = linear_model_2_train(x,y);
 points = linspace(0,1.5,100);
