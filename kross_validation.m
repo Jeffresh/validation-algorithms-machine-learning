@@ -17,7 +17,11 @@ for j=1:number_segments
     wcp(j) = cost_function(x_test',y_test',model, predict_function);
 end
 
+if nargin > 5
 model = train_function(x,y,grade);
+else
+model = train_function(x,y);
+end
 
 wcp(j+1) = cost_function(x,y,model,predict_function);
 
