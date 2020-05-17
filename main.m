@@ -42,3 +42,21 @@ ypredicted = linear_model_2_predict(points,theta);
 
 plot_data(x,y), hold on
 plot(points,ypredicted, '-');hold off
+
+
+%% Simple validation to polynomial adjustment
+
+max_polynom_grade = 30;
+max_iterations = 1000;
+test_data_percent = 75;
+
+for polynom = 1:max_polynom_grade
+    for i = 1:max_iterations
+    error(i) = simple_validation(x,y,test_data_percent, @polynomial_train, @polynomial_predict,polynom);
+    end
+    mean_error(polynom)=(mean(error));
+end
+
+plot(mean_error)
+legend('generalization error')
+xlabel('polynomial grade')
