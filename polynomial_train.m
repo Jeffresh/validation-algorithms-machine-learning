@@ -1,4 +1,4 @@
-function theta = train(X, Y, polynom_grade)
+function theta = polynomial_train(X, Y, polynom_grade)
 %TRAINING Summary of this function goes here
 %   Detailed explanation goes here
 

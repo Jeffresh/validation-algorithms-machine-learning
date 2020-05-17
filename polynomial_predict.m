@@ -1,4 +1,4 @@
-function h = predict(input,theta)
+function h = polynomial_predict(input,theta)
 %PREDICT Summary of this function goes here
 %   Detailed explanation goes here
 
