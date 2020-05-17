@@ -13,10 +13,10 @@ xtest = x(data_indexes(trn_data_length+1:end));
 ytrn = y(data_indexes(1:trn_data_length));
 ytest = y(data_indexes(trn_data_length+1:end));
 
-if nargin>4
+if nargin>5
   model = train_function(xtrn,ytrn,grade);
 else
-  model = train_function(xtrn,ytrn,grade);
+  model = train_function(xtrn,ytrn);
 end
 
 generalization_error = cost_function(xtest,ytest,model, predict_function);
