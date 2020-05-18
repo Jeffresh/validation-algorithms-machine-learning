@@ -143,7 +143,7 @@ plot(mean_error)
 legend('generalization error')
 xlabel('polynomial grade')
 
-%% One leave out to a linear model  a + bx + x^2 + dx^3+ e*sin(x)
+%% Leave one out to a linear model  a + bx + x^2 + dx^3+ e*sin(x)
 
 max_iterations = 23;
 order = 10;
